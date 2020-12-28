@@ -21,7 +21,6 @@ interface UserComponent {
     fun inject(fragment: Screen2)
 }
 
-/** область видимости первый экран пользователя  */
 @Scope
 @Retention(RUNTIME)
 annotation class UserScope

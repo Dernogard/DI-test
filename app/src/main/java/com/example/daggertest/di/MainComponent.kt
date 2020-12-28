@@ -6,7 +6,7 @@ import javax.inject.Scope
 import kotlin.annotation.AnnotationRetention.RUNTIME
 
 @ActivityScope
-@Subcomponent
+@Subcomponent(modules = [MainModule::class])
 interface MainComponent {
 
     @Subcomponent.Factory
@@ -17,7 +17,6 @@ interface MainComponent {
     fun inject(fragment: MainFragment)
 }
 
-/** область видимости ЖЦ активити  */
 @Scope
 @Retention(RUNTIME)
 annotation class ActivityScope

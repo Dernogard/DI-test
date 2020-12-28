@@ -5,7 +5,7 @@ import com.example.daggertest.repo.UserRepositoryImpl
 import dagger.Binds
 import dagger.Module
 
-@Module
+@Module(includes = [MainModule::class])
 abstract class UserModule {
 
     @UserScope
