@@ -11,12 +11,12 @@ import com.example.daggertest.R
 import com.example.daggertest.databinding.FragmentScreen1Binding
 import com.example.daggertest.repo.MainRepository
 import com.example.daggertest.repo.UserRepository
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
 
 class Screen1: Fragment() {
 
-    @Inject lateinit var mainRepository: MainRepository
-    @Inject lateinit var userRepository: UserRepository
+    private val mainRepository: MainRepository by inject()
+    private lateinit var userRepository: UserRepository
 
     private var count = 0
 
@@ -24,8 +24,7 @@ class Screen1: Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        (requireActivity() as MainActivity).userComponent.inject(this)
+        userRepository = (activity as MainActivity).userRepository
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
