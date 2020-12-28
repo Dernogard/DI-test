@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.daggertest.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_screen12"
+            app:destination="@id/screen12" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/screen12"
+        android:name="com.example.daggertest.ui.main.Screen1"
+        android:label="Screen1"
+        tools:layout="@layout/fragment_screen_1">
+        <action
+            android:id="@+id/action_screen12_to_screen22"
+            app:destination="@id/screen22" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/screen22"
+        android:name="com.example.daggertest.ui.main.Screen2"
+        android:label="Screen2"
+        tools:layout="@layout/fragment_screen_2"/>
+</navigation>
