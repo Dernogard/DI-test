@@ -25,7 +25,7 @@ class Screen1: Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        (requireActivity() as MainActivity).userComponent.inject(this)
+        (requireActivity() as MainActivity).userComponent?.inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
