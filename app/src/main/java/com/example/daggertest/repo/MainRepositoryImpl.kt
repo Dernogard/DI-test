@@ -3,7 +3,7 @@ package com.example.daggertest.repo
 import com.example.daggertest.storage.Storage
 import javax.inject.Inject
 
-class MainRepositoryImpl @Inject constructor(
+class MainRepositoryImpl constructor(
     private val storage: Storage
 ): MainRepository {
 

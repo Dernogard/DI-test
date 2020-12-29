@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 /** Тут сохраняется число в ЖЦ экрана1 и его потомков */
 
-class UserStorage @Inject constructor(): Storage {
+class UserStorage: Storage {
 
     private var cache: String = "0"
 
