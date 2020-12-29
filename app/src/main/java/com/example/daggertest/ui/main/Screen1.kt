@@ -11,6 +11,7 @@ import com.example.daggertest.R
 import com.example.daggertest.databinding.FragmentScreen1Binding
 import com.example.daggertest.repo.MainRepository
 import com.example.daggertest.repo.UserRepository
+import org.koin.android.ext.android.getKoin
 import org.koin.android.ext.android.inject
 
 class Screen1: Fragment() {

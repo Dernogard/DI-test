@@ -20,7 +20,8 @@ val appModule = module {
 
 val userModule = module {
     scope(named<MainActivity>()){
-        scoped { UserRepositoryImpl(get(qualifier = named("UserStorage"))) } bind UserRepository::class
+        scoped {
+            UserRepositoryImpl(get(qualifier = named("UserStorage"))) } bind UserRepository::class
         }
 
     factory<Storage>(qualifier = named("UserStorage")) { UserStorage() }
