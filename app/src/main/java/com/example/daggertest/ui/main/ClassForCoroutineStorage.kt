@@ -8,6 +8,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
+/** Универсальная функция конвертации rxSingle в корутину */
 suspend fun <T> Single<T>.toSuspend(): T = suspendCancellableCoroutine { cont ->
     this.subscribe(object : SingleObserver<T> {
         override fun onSubscribe(d: Disposable) {

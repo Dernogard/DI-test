@@ -18,19 +18,21 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 
+/** Простенький экран для демонстрации работы корутины без лишних заморочек */
 class ScreenCoroutine : Fragment() {
 
     private val TAG: String = javaClass.simpleName
     private lateinit var binding: FragmentCoroutineBinding
+
+    /** job корутины */
     private var counterJob: Job? = null
+    /** rx Single которую будем конвертировать */
     private val single = Single.fromCallable { getMyText() }
 
+    /** Эмуляция долгой работы по получению данных */
     private fun getMyText(): String {
         Log.e(TAG, "Начинаем долгое получение данных")
-        try {
-            Thread.sleep(5000)
-        } catch (e: Exception) {
-        }
+        try { Thread.sleep(5000) } catch (e: Exception) { }
         return "Text в Single"
     }
 
@@ -74,6 +76,7 @@ class ScreenCoroutine : Fragment() {
         counterJob?.cancel()
     }
 
+    /** просто и без лишних заморочек рисует звёздочки на экране */
     private suspend fun drawStar(starNum: Int) {
         withContext(Main) {
             binding.counter.text = when (starNum) {
