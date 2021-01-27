@@ -9,10 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.daggertest.databinding.FragmentCoroutineBinding
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.Job
@@ -28,11 +24,13 @@ class ScreenCoroutine : Fragment() {
     private lateinit var binding: FragmentCoroutineBinding
     private var counterJob: Job? = null
     private val single = Single.fromCallable { getMyText() }
-    private val dispo = CompositeDisposable()
 
     private fun getMyText(): String {
         Log.e(TAG, "Начинаем долгое получение данных")
-        try { Thread.sleep(5000) } catch (e: Exception) {}
+        try {
+            Thread.sleep(5000)
+        } catch (e: Exception) {
+        }
         return "Text в Single"
     }
 
@@ -44,7 +42,7 @@ class ScreenCoroutine : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonStart.setOnClickListener { //testDispose() }
+        binding.buttonStart.setOnClickListener {
             if (counterJob == null || counterJob?.isActive == false) startJob()
             else stopJob().apply { binding.buttonStart.text = "Старт" }
         }
@@ -71,21 +69,8 @@ class ScreenCoroutine : Fragment() {
         }
     }
 
-    fun testDisposeIsWork() {
-        single
-            .doOnDispose { Log.e("CoroutineClass", "<== dispose ==>") }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doFinally { Log.e("CoroutineClass", "<== finally ==>") }
-            .subscribe(
-                { Log.e("InSingle", "Subscribe") },
-                { Log.e("InSingle", "Error") }
-            ).addTo(dispo)
-    }
-
     private fun stopJob() {
         Log.e(TAG, "Останавливаем работу")
-        dispo.dispose()
         counterJob?.cancel()
     }
 
