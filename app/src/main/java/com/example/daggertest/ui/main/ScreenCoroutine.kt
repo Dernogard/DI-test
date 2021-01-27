@@ -11,27 +11,16 @@ import com.example.daggertest.databinding.FragmentCoroutineBinding
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.rx2.asCompletable
 import kotlinx.coroutines.withContext
 import java.lang.Exception
-import java.util.concurrent.CancellationException
-import java.util.concurrent.atomic.AtomicInteger
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
 
 class ScreenCoroutine : Fragment() {
 
@@ -74,7 +63,7 @@ class ScreenCoroutine : Fragment() {
                 if (i % 2 == 0) drawStar(starNum).apply { if (starNum >= 3) starNum = 0 else starNum++ }
                 if (i == 3) {
                     launch {
-                        val str = single.toSuspend(dispo)
+                        val str = single.toSuspend()
                         Log.e(TAG, str)
                     }
                 }
