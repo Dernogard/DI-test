@@ -42,6 +42,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.toScreen1.setOnClickListener { findNavController().navigate(R.id.action_mainFragment_to_screen12) }
+        binding.toScreen2.setOnClickListener { findNavController().navigate(R.id.action_mainFragment_to_screenCoroutine) }
         binding.buttonSaveName.setOnClickListener { saveNameToMainRepository() }
     }
 

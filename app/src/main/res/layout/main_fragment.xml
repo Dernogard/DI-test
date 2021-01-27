@@ -69,4 +69,11 @@
         android:layout_marginVertical="16dp"
         android:text="На первый экран" />
 
+    <Button
+        android:id="@+id/to_screen_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:text="На экран С корутиной" />
+
 </LinearLayout>

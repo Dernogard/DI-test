@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_screen12"
             app:destination="@id/screen12" />
+        <action
+            android:id="@+id/action_mainFragment_to_screenCoroutine"
+            app:destination="@id/screenCoroutine" />
     </fragment>
 
     <fragment
@@ -30,4 +33,10 @@
         android:name="com.example.daggertest.ui.main.Screen2"
         android:label="Screen2"
         tools:layout="@layout/fragment_screen_2"/>
+
+    <fragment
+        android:id="@+id/screenCoroutine"
+        android:name="com.example.daggertest.ui.main.ScreenCoroutine"
+        tools:layout="@layout/fragment_coroutine"
+        android:label="ScreenCoroutine" />
 </navigation>
